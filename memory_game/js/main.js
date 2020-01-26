@@ -30,19 +30,16 @@ function checkForMatch() {
     alert("Sorry try again!");
   }
 }
-function flipCard() {
-  let cardId = this.getAttribute("data-id");
-  this.setAttribute(src, cards[cardId].cardImage);
+function flipCard(event) {
+  let cardId = event.target.getAttribute("data-id");
+  event.target.setAttribute("src", cards[cardId].cardImage);
+  cardsInPlay.push(cards[cardId].rank);
   if (cardsInPlay.length === 2) {
     checkForMatch();
-  } else {
-    flipCard();
   }
   console.log("User flipped " + cards[cardId].rank);
   console.log(cards[cardId].cardImage);
   console.log(cards[cardId].suit);
-
-  cardsInPlay.push(cards[cardId].rank);
 }
 
 function createBoard() {
